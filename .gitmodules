@@ -2,7 +2,7 @@
 	path = bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
 [submodule "bundle/snipmate.vim"]
-	path = /bundle/snipmate.vim
+	path = bundle/snipmate.vim
 	url = https://github.com/msanders/snipmate.vim.git
 [submodule "bundle/sunburst.vim"]
 	path = bundle/sunburst.vim
