@@ -10,3 +10,6 @@
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
 	ignore = untracked
+[submodule ".\\bundle\\javascript.vim"]
+	path = .\\bundle\\javascript.vim
+	url = https://github.com/serverhorror/javascript.vim.git
