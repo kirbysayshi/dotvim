@@ -1,15 +1,12 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-	ignore = untracked
+	ignore = dirty
 [submodule "bundle/snipmate.vim"]
 	path = bundle/snipmate.vim
 	url = https://github.com/msanders/snipmate.vim.git
-	ignore = untracked
+	ignore = dirty
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
-	ignore = untracked
-[submodule ".\\bundle\\javascript.vim"]
-	path = .\\bundle\\javascript.vim
-	url = https://github.com/serverhorror/javascript.vim.git
+	ignore = dirty
