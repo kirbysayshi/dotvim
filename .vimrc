@@ -32,6 +32,7 @@ if has("win32")
 endif
 
 " options
+set expandtab					  " insert spaces instead of tabs when <TAB> is pressed
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
