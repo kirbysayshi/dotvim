@@ -47,6 +47,8 @@ set laststatus=2				  " ?? for smarter statusline
 "set wrap                          " for julio
 set nowrap
 set linebreak
+set textwidth=0
+set wrapmargin=0
 set showtabline=2                 " always
 set wildmode=list:longest,full    " completion style when opening files
 
@@ -64,7 +66,7 @@ au BufRead *.php set ft=php.html
 au BufNewFile *.php set ft=php.html
 
 " yes
-set textwidth=79
+" set textwidth=79
 "match ErrorMsg '\%>80v.\+'
 "au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
 

@@ -10,3 +10,6 @@
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
 	ignore = dirty
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
