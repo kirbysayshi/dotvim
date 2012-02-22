@@ -59,7 +59,7 @@ set formatoptions-=o              " but stop it when o/O
 
 " buffer shortcuts
 " press <F5> to bring up a menu of buffers
-noremap <F5> :buffers<CR>:buffer<Space>
+" noremap <F5> :buffers<CR>:buffer<Space>
 
 " activate html snippets on .php files
 au BufRead *.php set ft=php.html
