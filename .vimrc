@@ -6,19 +6,16 @@
 set nocompatible                  " yeah
 
 " enable pathogen!
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
+
+" indentation
+filetype plugin indent on
 
 " colours
 syntax on
 colorscheme sunburst
 
-" set global backup and swp folders to avoid clutter
-" silent execute '!mkdir "'.$HOME.'/.backup/vimbackup"'
-" silent execute '!mkdir "'.$HOME.'/.backup/vimswp"'
-" set backupdir=$HOME/.backup/vimbackup//
-" set directory=$HOME/.backup/vimswp//
-set nobackup
+set noswapfile
 
 " change parenthesis matching to a different color than the cursor
 highlight MatchParen guibg=#2A2A2A guifg=#F0F0F0
@@ -66,18 +63,6 @@ set formatoptions-=o              " but stop it when o/O
 au BufRead *.php set ft=php.html
 au BufNewFile *.php set ft=php.html
 
-" yes
-" set textwidth=79
-"match ErrorMsg '\%>80v.\+'
-"au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%>80v.\+', -1)
-
-" use c-a in command mode
-cnoremap <C-a> <Home>
-
-" git/svn blame - \g/\s on a visual block - FIXME svn blame not working
-vmap <Leader>g :<C-u>!git blame <C-r>=expand("%") <CR> \| sed -n <C-r>=line("'<") <CR>,<C-r>=line("'>") <CR>p <CR>
-vmap <Leader>s :<C-u>!svn blame <C-r>=expand("%") <CR> \| sed -n <C-r>=line("'<") <CR>,<C-r>=line("'>") <CR>p <CR>
-
 " move windows easily
 noremap <C-k> <C-w>k
 noremap <C-h> <C-w>h
@@ -99,8 +84,6 @@ noremap <C-j> <C-w>j
 " set paste! - keybindings
 map <leader>p :set paste!<CR>
 
-" indentation
-filetype plugin indent on
 
 aug init
   au FileType ruby       let g:rubycomplete_rails=1
@@ -181,15 +164,6 @@ imap <C-]> <C-x><C-]>
 inoremap <expr> <C-d> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
 inoremap <expr> <C-u> pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
 
-" align commas nicely
-" FIXME it's bad
-function! AlignCommasNicely()
-  exec ":AlignCtrl =Wl"
-  exec ":%Align ,"
-  exec ":%s/\\([ ]\\+\\),/,\\1/g"
-endfunction
-command! AC :call AlignCommasNicely()
-
 " move up/down based on visual, not actual lines (for word wrap)
 nnoremap j gj
 nnoremap k gk
@@ -208,15 +182,6 @@ nmap <Leader>\ :ptag <C-r>=expand("<cword>")<CR><CR>
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-""""""""""""""""""""""""""""""
-" => Command-T
-""""""""""""""""""""""""""""""
-try
-  let g:CommandTMaxHeight = 15
-  set wildignore+=*.o,*.obj,.git,*.pyc
-catch
-endtry
 
 " indent/dedent with >< without losing hightlighted text
 vnoremap < <gv
