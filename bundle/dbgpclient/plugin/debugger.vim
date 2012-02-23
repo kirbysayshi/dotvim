@@ -116,6 +116,7 @@ if !has("python")
     finish
 endif
 
+let s:pybugger=expand("<sfile>:p:h")."/debugger.py"
 
 if filereadable($VIMRUNTIME."/plugin/debugger.py")
   pyfile $VIMRUNTIME/plugin/debugger.py
@@ -123,8 +124,8 @@ elseif filereadable($HOME."/.vim/plugin/debugger.py")
   pyfile $HOME/.vim/plugin/debugger.py
 elseif filereadable($VIM."/vimfiles/plugin/debugger.py")
   pyfile $VIM/vimfiles/plugin/debugger.py
-elseif filereadable("./debugger.py")
-  pyfile ./debugger.py
+elseif filereadable(s:pybugger)
+  execute "pyfile ".s:pybugger
 else
   call confirm('debugger.vim: Unable to find debugger.py. Place it in either your home vim directory or in the Vim runtime directory.', 'OK')
 endif
