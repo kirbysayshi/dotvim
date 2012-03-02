@@ -16,8 +16,9 @@ colorscheme sunburst
 " set global backup and swp folders to avoid clutter
 " silent execute '!mkdir "'.$HOME.'/.backup/vimbackup"'
 " silent execute '!mkdir "'.$HOME.'/.backup/vimswp"'
-set backupdir=$HOME/.backup/vimbackup//
-set directory=$HOME/.backup/vimswp//
+" set backupdir=$HOME/.backup/vimbackup//
+" set directory=$HOME/.backup/vimswp//
+set nobackup
 
 " change parenthesis matching to a different color than the cursor
 highlight MatchParen guibg=#2A2A2A guifg=#F0F0F0
