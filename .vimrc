@@ -20,7 +20,8 @@ highlight MatchParen guibg=#2A2A2A guifg=#F0F0F0
 set noswapfile
 set encoding=utf8
 
-set expandtab					  " insert spaces instead of tabs when <TAB> is pressed
+"set expandtab					  " insert spaces instead of tabs when <TAB> is pressed
+set noexpandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -40,6 +41,9 @@ set wildmode=list:longest,full    " completion style when opening files
 set formatoptions+=r              " keep autoindent for <CR>
 set formatoptions-=o              " but stop it when o/O
 "set formatoptions+=t              " autowrap text to textwidth
+
+" 'set list' will show special chars as the following
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 " buffer shortcuts
 " press <F5> to bring up a menu of buffers
