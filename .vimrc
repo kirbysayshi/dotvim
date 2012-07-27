@@ -15,7 +15,7 @@ filetype plugin indent on
 syntax on
 colorscheme sunburst
 " change parenthesis matching to a different color than the cursor
-highlight MatchParen guibg=#2A2A2A guifg=#F0F0F0
+highlight MatchParen guibg=#2A2A2A guifg=#F0F0F0 " 
 
 set noswapfile
 set encoding=utf8
@@ -42,8 +42,38 @@ set formatoptions+=r              " keep autoindent for <CR>
 set formatoptions-=o              " but stop it when o/O
 "set formatoptions+=t              " autowrap text to textwidth
 
+" folding
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+
 " 'set list' will show special chars as the following
-set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set listchars=eol:¬,tab:▸\ ,trail:~,extends:>,precedes:<
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+
+" use PCRE regex for searches
+nnoremap / /\v
+vnoremap / /\v
+
+" smart search case sensitivity
+set ignorecase
+set smartcase
+
+" apply substitutions globally per line
+set gdefault
+
+" highlight search results
+set incsearch
+set showmatch
+set hlsearch
+
+" shortcut to end search highlighting
+nnoremap <leader><space> :noh<cr>
+
+" TAB matches bracket pairs
+nnoremap <tab> %
+vnoremap <tab> %
 
 " buffer shortcuts
 " press <F5> to bring up a menu of buffers
@@ -115,3 +145,48 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " indent/dedent with >< without losing hightlighted text
 vnoremap < <gv
 vnoremap > >gv
+
+" easily escape insert mode
+inoremap jj <Esc>`^
+inoremap JJ <Esc>`^
+
+" use w!! to sudo save if forgot to open the file with sudo
+cnoremap w!! %!sudo tee > /dev/null %
+
+" restore position in a file
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g'\"" | endif
+
+" persistent undos
+if has('persistent_undo')
+	set undofile "so is persistent undo ...
+	set undolevels=1000 "maximum changes to undone
+	set undoreload=10000 "maximum number lines to save
+	set undodir=~/.vim/undo
+endif
+
+" allow unsaved edited buffers to exist in the background
+set hidden
+
+" ctrlP invocation
+let g:ctrlp_map = '<Leader>p'
+
+" ctrlP ignore
+let g:ctrlp_custom_ignore = {
+	\ 'dir':  '\.git$\|\.hg$\|\.svn$',
+	\ 'file': '\.exe$\|\.so$\|\.dll$',
+	\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+\ }
+
+" kill the arrow keys
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+
+" line numbers
+set number
+set relativenumber
+
+" <Leader>mm generates multimarkdown
+" :w !command		pipes output of :w into command
+map <Leader>mm <Esc>:w !multimarkdown --output=%.html && open %.html<CR><CR>

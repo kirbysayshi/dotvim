@@ -15,3 +15,6 @@
 [submodule "bundle/vim-easymotion.git"]
 	path = bundle/vim-easymotion.git
 	url = git://github.com/Lokaltog/vim-easymotion.git
+[submodule "bundle/nerdcommenter.git"]
+	path = bundle/nerdcommenter.git
+	url = git://github.com/scrooloose/nerdcommenter.git
