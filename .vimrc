@@ -13,7 +13,7 @@ filetype plugin indent on
 
 " colours
 syntax on
-colorscheme sunburst
+colorscheme Sunburst
 " change parenthesis matching to a different color than the cursor
 highlight MatchParen guibg=#2A2A2A guifg=#F0F0F0 " 
 
@@ -48,9 +48,12 @@ set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 
 " 'set list' will show special chars as the following
-set listchars=eol:¬,tab:▸\ ,trail:~,extends:>,precedes:<
+set listchars=eol:¬,tab:▸\ ,nbsp:·,trail:·,extends:⇢,precedes:⇠
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
+" apply muted colors to special chars
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
 
 " use PCRE regex for searches
 nnoremap / /\v
@@ -83,6 +86,8 @@ vnoremap <tab> %
 au BufNewFile,BufRead *.php setlocal filetype=php.html
 au BufNewFile,BufRead *.as    setlocal filetype=actionscript
 au BufRead,BufNewFile *.json  setlocal filetype=javascript
+
+au BufNewFile,BufRead *.md	setlocal filetype=markdown
 
 " move windows easily
 noremap <C-k> <C-w>k
@@ -167,15 +172,16 @@ endif
 " allow unsaved edited buffers to exist in the background
 set hidden
 
-" ctrlP invocation
-let g:ctrlp_map = '<Leader>p'
+" ctrlP invocation, search Files 
+map <Leader>p :CtrlP<cr>
+" search open buffers
+map <Leader>b :CtrlPBuffer<cr>
 
 " ctrlP ignore
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\.git$\|\.hg$\|\.svn$',
-	\ 'file': '\.exe$\|\.so$\|\.dll$',
-	\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-\ }
+let g:ctrlp_custom_ignore='\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_max_files=20000
+" nearest ancestor that contains .git, .svn, .hg, .bzr, _darcs
+let g:ctrlp_working_path_mode=2
 
 " kill the arrow keys
 noremap <up> <nop>
@@ -187,6 +193,14 @@ noremap <right> <nop>
 set number
 set relativenumber
 
-" <Leader>mm generates multimarkdown
+" <Leader>mm generates multimarkdown via maruku
 " :w !command		pipes output of :w into command
-map <Leader>mm <Esc>:w !multimarkdown --output=%.html && open %.html<CR><CR>
+map <Leader>mm <Esc>:w !maruku --output=%.html && open %.html<CR><CR>
+
+" <Leader>vi reloads vimrc
+map <Leader>vi :so $MYVIMRC<CR>
+
+" show syntax highlighting groups for syntax debugging
+map <Leader>hg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+	\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+	\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
