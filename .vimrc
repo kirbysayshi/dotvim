@@ -29,6 +29,8 @@ set autoindent                    " current line indent carries to next line
 set smartindent                   " also pay attention to syntax
 set shiftround                    " round indent to multiple of sw
 set laststatus=2				  " always show status line
+set scrolloff=7                   " always ensure 7 lines are visible above/below cursor when scrolling
+set sidescrolloff=10              " ensure at least 10 characters are visible when horizontally scrolling
 
 set nowrap
 set linebreak
@@ -204,3 +206,6 @@ map <Leader>vi :so $MYVIMRC<CR>
 map <Leader>hg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 	\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 	\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
+" gundo invocation
+nnoremap <Leader>u :GundoToggle<CR>
