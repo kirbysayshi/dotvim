@@ -24,3 +24,9 @@
 [submodule "bundle/gundo.vim.git"]
 	path = bundle/gundo.vim.git
 	url = http://github.com/sjl/gundo.vim.git
+[submodule "bundle/nerdtree.git"]
+	path = bundle/nerdtree.git
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "bundle/vim-nerdtree-tabs.git"]
+	path = bundle/vim-nerdtree-tabs.git
+	url = https://github.com/jistr/vim-nerdtree-tabs.git

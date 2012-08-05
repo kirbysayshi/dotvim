@@ -209,3 +209,6 @@ map <Leader>hg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 
 " gundo invocation
 nnoremap <Leader>u :GundoToggle<CR>
+
+" NERDTree w/ tabs
+map <Leader>e <plug>NERDTreeTabsToggle<CR>
