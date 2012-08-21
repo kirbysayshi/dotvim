@@ -66,7 +66,8 @@ set ignorecase
 set smartcase
 
 " apply substitutions globally per line
-set gdefault
+" set gdefault
+set nogdefault
 
 " highlight search results
 set incsearch
@@ -212,3 +213,36 @@ nnoremap <Leader>u :GundoToggle<CR>
 
 " NERDTree w/ tabs
 map <Leader>e <plug>NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_autoclose=0
+
+" Convert all leading spaces to tabs (default range is whole file):
+" :Space2Tab
+" Convert lines 11 to 15 only (inclusive):
+" :11,15Space2Tab
+" Convert last visually-selected lines:
+" :'<,'>Space2Tab
+" Same, converting leading tabs to spaces:
+" :'<,'>Tab2Space
+:command! -range=% -nargs=0 Tab2Space execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
+:command! -range=% -nargs=0 Space2Tab execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts . ')'
+
+" leader +/- moves to next buffer or prev
+:map <Leader>= :bnext<CR>
+:map <Leader>- :bprevious<CR>
+
+" Leader h/H html escapes/unescapes
+function! HtmlEscape()
+  silent s/&/\&amp;/eg
+  silent s/</\&lt;/eg
+  silent s/>/\&gt;/eg
+endfunction
+
+function! HtmlUnEscape()
+  silent s/&lt;/</eg
+  silent s/&gt;/>/eg
+  silent s/&amp;/\&/eg
+endfunction
+
+nnoremap <Leader>h :call HtmlEscape()<CR>
+nnoremap <Leader>H :call HtmlUnEscape()<CR>
+" end html escape helper
