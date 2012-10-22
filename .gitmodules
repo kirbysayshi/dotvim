@@ -30,3 +30,9 @@
 [submodule "bundle/vim-nerdtree-tabs.git"]
 	path = bundle/vim-nerdtree-tabs.git
 	url = https://github.com/jistr/vim-nerdtree-tabs.git
+[submodule "bundle/delimitMate.git"]
+	path = bundle/delimitMate.git
+	url = git://github.com/Raimondi/delimitMate.git
+[submodule "bundle/change-inside-surroundings.vim.git"]
+	path = bundle/change-inside-surroundings.vim.git
+	url = git://github.com/briandoll/change-inside-surroundings.vim.git

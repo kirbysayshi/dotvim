@@ -184,7 +184,7 @@ map <Leader>b :CtrlPBuffer<cr>
 let g:ctrlp_custom_ignore='\.git$\|\.hg$\|\.svn$'
 let g:ctrlp_max_files=20000
 " nearest ancestor that contains .git, .svn, .hg, .bzr, _darcs
-let g:ctrlp_working_path_mode=2
+let g:ctrlp_working_path_mode='r'
 
 " kill the arrow keys
 noremap <up> <nop>
@@ -196,9 +196,9 @@ noremap <right> <nop>
 set number
 set relativenumber
 
-" <Leader>mm generates multimarkdown via maruku
+" <Leader>mm generates multimarkdown via marked 
 " :w !command		pipes output of :w into command
-map <Leader>mm <Esc>:w !maruku --output=%.html && open %.html<CR><CR>
+map <Leader>mm <Esc>:w !marked --output=%.html && open %.html<CR><CR>
 
 " <Leader>vi reloads vimrc
 map <Leader>vi :so $MYVIMRC<CR>
@@ -246,3 +246,25 @@ endfunction
 nnoremap <Leader>h :call HtmlEscape()<CR>
 nnoremap <Leader>H :call HtmlUnEscape()<CR>
 " end html escape helper
+
+" Remove Trailing Whitespace
+fun! <SID>StripTrailingWhitespaces()
+	let _s=@/			"save search pos
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+	let @/=_s			"restore search pos
+endfun
+
+nnoremap <Leader>ws :call <SID>StripTrailingWhitespaces()<CR>
+" end Remove Trailing Whitespace
+
+" Highlight trailing whitespace only when opening file or leaving insert mode
+highlight ExtraWhitespace ctermbg=red guibg=red
+au ColorScheme * highlight ExtraWhitespace guibg=red
+au BufEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhiteSpace /\s\+$/
+" end Highlight trailing whitespace
+
