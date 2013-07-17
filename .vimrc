@@ -194,7 +194,7 @@ noremap <right> <nop>
 
 " line numbers
 set number
-set relativenumber
+"set relativenumber
 
 " <Leader>mm generates multimarkdown via marked 
 " :w !command		pipes output of :w into command
@@ -268,3 +268,23 @@ au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 " end Highlight trailing whitespace
 
+" Quickly switch to 2space indents
+function! TabIs2Spaces()
+	setlocal expandtab
+	setlocal tabstop=2
+	setlocal softtabstop=2
+	setlocal shiftwidth=2
+endfunction
+
+" Quickly switch to 4space tab indents
+function! TabIs4CharTab()
+	setlocal noexpandtab
+	setlocal tabstop=4
+	setlocal softtabstop=4
+	setlocal shiftwidth=4
+endfunction
+
+command! -nargs=0 TabIs2Spaces call TabIs2Spaces()
+command! -nargs=0 Ti2s call TabIs2Spaces()
+command! -nargs=0 TabIs4CharTab call TabIs4CharTab()
+command! -nargs=0 Ti4c call TabIs4CharTab()
