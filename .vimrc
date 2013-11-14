@@ -285,6 +285,6 @@ function! TabIs4CharTab()
 endfunction
 
 command! -nargs=0 TabIs2Spaces call TabIs2Spaces()
-command! -nargs=0 Ti2s call TabIs2Spaces()
+command! -nargs=0 T2 call TabIs2Spaces()
 command! -nargs=0 TabIs4CharTab call TabIs4CharTab()
-command! -nargs=0 Ti4c call TabIs4CharTab()
+command! -nargs=0 T4 call TabIs4CharTab()
