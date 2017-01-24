@@ -15,10 +15,13 @@ filetype plugin indent on
 syntax on
 colorscheme Sunburst
 " change parenthesis matching to a different color than the cursor
-highlight MatchParen guibg=#2A2A2A guifg=#F0F0F0 " 
+highlight MatchParen guibg=#2A2A2A guifg=#F0F0F0 "
 
 set noswapfile
 set encoding=utf8
+
+" enable mouse scrolling
+set mouse=a
 
 "set expandtab					  " insert spaces instead of tabs when <TAB> is pressed
 set noexpandtab
