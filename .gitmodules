@@ -39,3 +39,9 @@
 [submodule "bundle/promptline.vim"]
 	path = bundle/promptline.vim
 	url = https://github.com/edkolev/promptline.vim
+[submodule "bundle/vim-multiple-cursors"]
+	path = bundle/vim-multiple-cursors
+	url = git@github.com:terryma/vim-multiple-cursors.git
+[submodule "bundle/rust.vim"]
+	path = bundle/rust.vim
+	url = git@github.com:rust-lang/rust.vim.git
