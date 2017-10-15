@@ -13,8 +13,6 @@ Everything else:
     ln -s ~/.vim/.vimrc ~/.vimrc
     ln -s ~/.vim/.gvimrc ~/.gvimrc
 
-And init submodules
-
-    git submodule init
-    git submodule update
+And install plugins:
+	:PlugInstall
 

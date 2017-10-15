@@ -3,10 +3,33 @@
 " vim:filetype=vim
 " inspiration: http://github.com/foot/dotfiles/tree/master/.vimrc
 
-set nocompatible
 
-" enable pathogen!
-call pathogen#infect()
+"
+
+call plug#begin($HOME.'/.vim/plugged')
+Plug 'http://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/msanders/snipmate.vim.git'
+Plug 'https://github.com/kien/ctrlp.vim.git'
+Plug 'git://github.com/Lokaltog/vim-easymotion.git'
+Plug 'git://github.com/tpope/vim-surround.git'
+Plug 'git://github.com/othree/html5.vim.git'
+Plug 'http://github.com/sjl/gundo.vim.git'
+Plug 'https://github.com/scrooloose/nerdtree.git', { 'on': 'NERDTreeToggle' }
+Plug 'https://github.com/jistr/vim-nerdtree-tabs.git', { 'on': 'NERDTreeToggle' }
+Plug 'git://github.com/Raimondi/delimitMate.git'
+Plug 'git://github.com/briandoll/change-inside-surroundings.vim.git'
+Plug 'https://github.com/bling/vim-airline'
+Plug 'https://github.com/edkolev/promptline.vim'
+Plug 'git@github.com:terryma/vim-multiple-cursors.git'
+Plug 'rust-lang/rust.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+call plug#end()
+
+set nocompatible
+set backspace=indent,eol,start
 
 " indentation
 filetype plugin indent on
@@ -251,3 +274,13 @@ command! -nargs=0 TabIs2Spaces call TabIs2Spaces()
 command! -nargs=0 T2 call TabIs2Spaces()
 command! -nargs=0 TabIs4CharTab call TabIs4CharTab()
 command! -nargs=0 T4 call TabIs4CharTab()
+
+" Ensure rls exists. It is only compatible with vim8
+if executable('rls') && (v:version >= 800)
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
