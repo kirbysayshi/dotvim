@@ -7,20 +7,20 @@
 "
 
 call plug#begin($HOME.'/.vim/plugged')
-Plug 'http://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/msanders/snipmate.vim.git'
-Plug 'https://github.com/kien/ctrlp.vim.git'
-Plug 'git://github.com/Lokaltog/vim-easymotion.git'
-Plug 'git://github.com/tpope/vim-surround.git'
-Plug 'git://github.com/othree/html5.vim.git'
-Plug 'http://github.com/sjl/gundo.vim.git'
-Plug 'https://github.com/scrooloose/nerdtree.git', { 'on': 'NERDTreeToggle' }
-Plug 'https://github.com/jistr/vim-nerdtree-tabs.git', { 'on': 'NERDTreeToggle' }
-Plug 'git://github.com/Raimondi/delimitMate.git'
-Plug 'git://github.com/briandoll/change-inside-surroundings.vim.git'
-Plug 'https://github.com/bling/vim-airline'
-Plug 'https://github.com/edkolev/promptline.vim'
-Plug 'git@github.com:terryma/vim-multiple-cursors.git'
+Plug 'tpope/vim-fugitive'
+Plug 'msanders/snipmate.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'tpope/vim-surround'
+Plug 'othree/html5.vim'
+Plug 'sjl/gundo.vim'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeToggle' }
+Plug 'Raimondi/delimitMate'
+Plug 'briandoll/change-inside-surroundings.vim'
+Plug 'bling/vim-airline'
+Plug 'edkolev/promptline.vim'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'rust-lang/rust.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -169,9 +169,9 @@ map <Leader>p :CtrlP<cr>
 map <Leader>b :CtrlPBuffer<cr>
 
 " ctrlP ignore
-let g:ctrlp_custom_ignore='\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_custom_ignore='\$\|\.hg$\|\.svn$'
 let g:ctrlp_max_files=20000
-" nearest ancestor that contains .git, .svn, .hg, .bzr, _darcs
+" nearest ancestor that contains , .svn, .hg, .bzr, _darcs
 let g:ctrlp_working_path_mode='r'
 
 " kill the arrow keys
