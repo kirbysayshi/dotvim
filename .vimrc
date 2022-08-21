@@ -6,6 +6,7 @@
 
 "
 
+let g:plug_url_format = "git@github.com:%s.git"
 call plug#begin($HOME.'/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'msanders/snipmate.vim'
@@ -15,7 +16,6 @@ Plug 'tpope/vim-surround'
 Plug 'othree/html5.vim'
 Plug 'sjl/gundo.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'jistr/vim-nerdtree-tabs', { 'on': 'NERDTreeToggle' }
 Plug 'Raimondi/delimitMate'
 Plug 'briandoll/change-inside-surroundings.vim'
 Plug 'bling/vim-airline'
@@ -200,7 +200,7 @@ map <Leader>hg :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> 
 nnoremap <Leader>u :GundoToggle<CR>
 
 " NERDTree w/ tabs
-map <Leader>e <plug>NERDTreeTabsToggle<CR>
+map <Leader>e :NERDTreeToggle<CR>
 let g:nerdtree_tabs_autoclose=0
 
 " Convert all leading spaces to tabs (default range is whole file):
