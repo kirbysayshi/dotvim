@@ -11,7 +11,6 @@ call plug#begin($HOME.'/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'msanders/snipmate.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'Lokaltog/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'othree/html5.vim'
 Plug 'sjl/gundo.vim'
@@ -28,6 +27,13 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
+
+if has('nvim')
+  Plug 'ggandor/leap.nvim'
+else
+  Plug 'easymotion/vim-easymotion'
+endif
+
 call plug#end()
 
 set nocompatible
@@ -175,10 +181,10 @@ let g:ctrlp_max_files=20000
 let g:ctrlp_working_path_mode='r'
 
 " kill the arrow keys
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
+" noremap <up> <nop>
+" noremap <down> <nop>
+" noremap <left> <nop>
+" noremap <right> <nop>
 
 " line numbers
 set number
@@ -286,3 +292,13 @@ if executable('rls') && (v:version >= 800)
         \ })
 endif
 
+
+if has('nvim')
+  lua require("leap").set_default_keymaps()
+else
+  " Easymotion fuzzy searching, replacing default
+  map  / <Plug>(easymotion-sn)
+  omap / <Plug>(easymotion-tn)
+  map  n <Plug>(easymotion-next)
+  map  N <Plug>(easymotion-prev)
+endif
