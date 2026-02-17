@@ -29,7 +29,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 
 if has('nvim')
-  Plug 'ggandor/leap.nvim'
+  Plug 'https://codeberg.org/andyg/leap.nvim'
 else
   Plug 'easymotion/vim-easymotion'
 endif
@@ -294,7 +294,8 @@ endif
 
 
 if has('nvim')
-  lua require("leap").set_default_keymaps()
+  lua vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+  lua vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
 else
   " Easymotion fuzzy searching, replacing default
   map  / <Plug>(easymotion-sn)
